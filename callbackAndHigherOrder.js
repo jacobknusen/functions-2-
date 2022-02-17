@@ -88,19 +88,25 @@ function last( arr, callback){
 */
 
 // CODE HERE 
-
-
+const contians = (arr, name, callback) => {
+  if(arr.includes(name) === true){//this is just saying does the array of names .include (name) 'whatver we passin into the function = name'
+    callback(true)// if so callback 'sendback' true
+  }else {
+    callback(false)// if not retun false
+  }
+}
+const contains = (arr, name, callback) => callback(arr.includes(name))
 // UNCOMMENT THE FUNCTION CALL BELOW
 // RUN THIS FILE WITH NODE
 // CHECK YOUR ANSWER
 
-// contains(names, 'Colt', result => {
-//   if(result === true){
-//     console.log('Colt is in the array')
-//   } else {
-//     console.log('Colt is not in the array')
-//   }
-// })
+ contains(names, 'Colt', result => {
+   if(result === true){
+     console.log('Colt is in the array')
+   } else {
+    console.log('Colt is not in the array')
+  }
+ })
 
 
 
@@ -113,7 +119,16 @@ function last( arr, callback){
 */
 
 // CODE HERE
-
+const uniq = (arr, callback) =>{
+  for(let i = 0; i < arr.length; i++){
+    for(let y = 0; y < arr.length; y++){
+      if (arr[i] === arr[y]){
+        arr.splice(y, 1)
+      }
+    }
+  }
+  callback(arr)
+}
 /*
   Invoke the uniq function, passing in the names array from above and a callback function.
   The callback function should take in one parameter called uniqArr.
@@ -122,6 +137,9 @@ function last( arr, callback){
 */
 
 // CODE HERE
+uniq(names, uniqArr => console.log(`The new names array with all the duplicates gone ${uniqArr}`))
+
+  
 
 
 
@@ -133,7 +151,7 @@ function last( arr, callback){
 */
 
 // CODE HERE 
-
+const each = (arr, callback) => arr.forEach ((el, i ) => callback(el, i))
 
 /*
   Invoke the each function, passing in the names array and a callback function.
@@ -144,14 +162,28 @@ function last( arr, callback){
 
 // CODE HERE
 
-
+each(names, (iteam, index) => console.log(`the item at index${index} is ${iteam}`))
+//  output 
+//the item at index0 is Cahlan
+//the item at index1 is Colt
+//the item at index2 is Blaine
 ////////// PROBLEM 7 //////////
 
 /*
   Write a function called getUserById that takes in three parameters: an array of objects (users), an id and a callback, and searches for the user with a matching id.
   When the correct user object is found, invoke the callback with the user object as an argument.
 */
-
+//const getUserById = (arr, id, cb) => {
+  //for (let i = 0; i < arr.length; i++) {
+    //  if (arr[i].id === id) {
+    //      return cb(arr[i])
+     // }
+ // }
+//}
+ //getUserById = (arr, id, cb) => arr.forEach(elem => elem.id === id ? cb(elem) : null)
+// getUserById(users, '16t', user => {
+  //console.log('The user with the id 16t has the email of ' + user.email + ' the name of ' + user.name + ' and the address of ' + user.address) 
+//})
 // Do not edit the code below.
 var users = [
   {
@@ -203,7 +235,22 @@ var users = [
 */
 
 // CODE HERE
+const addingFactory = (x) =>{
+  return function(y){
+    return x + y 
+  }
+}
 
+const mutliplyfactory = (x) => {
+  return function(y){
+    return x * y 
+  }
+}
+const dividefactory = (j) => {
+  return function (k){
+    return j / k 
+  }
+}
 /*
   Now that you have addingFactory, you can create other
   functions from it. 
@@ -217,6 +264,9 @@ var users = [
 */
 
 // CODE HERE
+const addten = addingFactory(10)
+const mutliplyten = mutliplyfactory(10)
+const divten = dividefactory(10)
 
 /*
   Now the inner function is stored in the addTen variable! 
@@ -229,7 +279,10 @@ var users = [
 */
 
 // CODE HERE
-
+console.log(addten(20))
+console.log(addten(50))
+console.log(mutliplyten(10))
+console.log(divten(2))
 /*
   Let's make another function from the addingFactory. 
 
@@ -240,6 +293,11 @@ var users = [
   Once you create that, you can invoke the function
   to add any number to your favorite number!
 */
-
+const addnumberby50 = addingFactory(50)
+const mutliplynumberby100 = mutliplyfactory(100)
+const divnumberby50 = dividefactory(50)
 // CODE HERE
-
+console.log(`${addnumberby50(100)} this is 100`)
+console.log(addnumberby50(5))
+console.log(mutliplynumberby100(100))
+console.log(divnumberby50(2))

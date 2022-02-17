@@ -6,15 +6,20 @@
 */
 
 // CODE HERE
+// multiply is 
+function multiply(num1, num2, callback ){
+   return callback( num1 * num2)// return the callback. (num1 * num2 ) is invoking the callback. giving it a value 
+}
+// we created a function called mutliply gave 3 params 
+// inside the return and call back we told it to times num1 by num2 
 
 
-// UNCOMMENT THE FUNCTION CALL BELOW
-// RUN THIS FILE WITH NODE
-// CHECK YOUR ANSWER
 
-// multiply(4, 3, answer => {
-//   console.log('The answer is ' + answer) //should console.log 12
-// })
+
+ const result = multiply(5, 5, answer => {
+  return (`The answer is '  ${answer}`) 
+})
+console.log(result)
 
 
 
@@ -36,15 +41,17 @@ var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan']
 */
 
 // CODE HERE 
-
+function first(arr, callback){
+  return callback[arr[0]]// this is passing in the first element of the arr. 
+}
 
 // UNCOMMENT THE FUNCTION CALL BELOW
 // RUN THIS FILE WITH NODE
 // CHECK YOUR ANSWER
-
-// first(names, firstName => {
-//   console.log('The first name in names is ' + firstName)
-// })
+// call back function is first
+ first(names, firstName => {
+   console.log('The first name in names is ' + firstName)
+ })
 
 
 
@@ -56,15 +63,18 @@ var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan']
 */
 
 // CODE HERE
-
+function last( arr, callback){
+  return callback(arr[arr.length - 1])//[arr[arr.length] - 1] well refrences the arr above. then we use the 
+                                        //arr.length to get the total - 1 for the very last name in the names array. output The last name in names is Cahlan
+}
 
 // UNCOMMENT THE FUNCTION CALL BELOW
 // RUN THIS FILE WITH NODE
 // CHECK YOUR ANSWER
 
-// last(names, lastName => {
-//   console.log('The last name in names is ' + lastName)
-// })
+ last(names, lastName => {
+  console.log('The last name in names is ' + lastName)
+ })
 
 
 
@@ -232,3 +242,4 @@ var users = [
 */
 
 // CODE HERE
+

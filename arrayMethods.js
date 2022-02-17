@@ -2,7 +2,7 @@
     You can check your answers in this file
     by console.logging the variables that are 
     storing the results of your function calls.
-*/
+*/ 
 
 ////////// PROBLEM 1 //////////
 
@@ -16,10 +16,10 @@ const mixedNumbers = [6,3,1,7,5,2,6,8,9,4,2,7,9,3,1,8,4,3];
   function(element, index, wholeArray){}  Function Form
   (element, index, wholeArray)=>{}    Arrow Form
 */
-
+// element = mixednumbers[i]
 // CODE HERE
-const evenNumbers // = mixedNumbers.filter(/* Provide Your Callback Here */)
-
+const evenNumbers = mixedNumbers.filter(Element => Element % 2 === 0 )
+console.log(evenNumbers)
 
 
 ////////// PROBLEM 2 //////////
@@ -39,8 +39,11 @@ const prices = [15.00, 23.00, 78.00, 34.00, 12.00, 86.00, 12.00, 79.00, 32.00];
 */
 
 // CODE HERE
-const postTaxPrices // = prices.map(/* Provide Your Callback Here );
-
+const postTaxPrices  = prices.map(function(price){
+  return (price *= 1.07).toPrecision(4)//.toprecison() well change how many numbers itll print out. depding what number you put inside the ()
+}// price times *= is the same as price = price * 1.07
+);
+console.log(postTaxPrices)
 
 
 ////////// PROBLEM 3 //////////
@@ -57,9 +60,11 @@ const populations = [8175133, 3792621, 2695598, 2100263];
 */
 
 // CODE HERE
-const totalPopulation //  = populations.reduce(/* Provide Your Callback Here */)
+const totalPopulation = populations.reduce(function(acc, curr){
+  return acc + curr 
+})
 
-
+console.log(totalPopulation)
 
 ////////// PROBLEM 4 //////////
 
@@ -82,10 +87,15 @@ const monstersInYourPocket = [{"monster":"Bulbabunny","CP":156},{"monster":"Bulb
 */
 
 // CODE HERE
-const myStrongest // = monstersInYourPocket.filter(/* Provide Your Callback Here */)
+const myStrongest  = monstersInYourPocket.filter(monster => monster['CP'] > 200)
+//same thing but this  one is a arrow thatll only return greater than 200
+const myweakest = monstersInYourPocket.filter(function(monster){
+  return monster['CP'] < 200;
+})//this on well only return anyhting less than 200 
 
-
-
+// anyhting after the arrow => is the if statment. > 200 is the return statement 
+console.log(myStrongest)
+console.log(myweakest)
 ////////// PROBLEM 5 //////////
 
 // Do not edit code below.
@@ -96,13 +106,15 @@ const orders = [{"price":15,"tax":0.09},{"price":42,"tax":0.07},{"price":56,"tax
 // Do not edit code above.
 
 /*
-  Use a higher order method to get all the order totals after adding in the sales tax (given to you as a tax rate, hint: you'll need to do some multiplication). Your answer should be an array of numbers, one total for each order.
+  Use a higher order method to get all the order totals after adding in the sales tax (given to you as a tax rate, hint: you'll need to do some multiplication). 
+  Your answer should be an array of numbers, one total for each order.
 */
 
 // CODE HERE
-
-
-
+const ordersaftertax = orders.map(item =>(item['price'] *= (item['price'] + item['tax'])).toPrecision(4) );
+//samething as above. 
+//const totalOrders = orders.map(item => (item['price'] *= (1 + item['tax'])).toPrecision(4)); console.log(totalOrders);
+console.log(ordersaftertax)
 ////////// PROBLEM 6 //////////
 
 // Do not edit the code below.
@@ -120,3 +132,21 @@ const purchases = [{"owner":"Barry","price":103},{"owner":"Bob","price":75},
 */
 
 // CODE HERE
+
+//const bobsTotal = purchases.filter(person => person['owner'] === "Bob")
+////console.log(bobsTotal)
+//const purchasesarray = bobsTotal.forEach(Element,  => 
+  const bobsTotal = purchases.filter(function(element){
+    return element.owner === "Bob" //this filters out everything thats not equal to bob
+    })
+    const newbobtotals = bobsTotal.reduce(function(acc, cr){
+      return acc + cr.price// this takes the new array of bobs purchas and only looks at the price
+    },0)// 0 is the starting value. 0 
+    
+    console.log(newbobtotals)
+
+////const bobtotal = purchases.filter(jerry  => jerry[owner] === 'Bob' ).reduce(function(acc, curr){
+  //return acc + curr
+//})
+
+//console.log(bobtotal)
